@@ -1,0 +1,6 @@
+target/
+.vscode/
+run.ps1
+*.log
+cp.txt
+.DS_Store

@@ -1,0 +1,28 @@
+name: AI Code Review (Gemini)
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Gemini Code Review
+        uses: google-gemini/gemini-code-review-action@v1
+        with:
+          # Aqui usamos a Secret que você criou
+          gemini_api_key: ${{ secrets.AI_API_KEY }}
+          model: "gemini-2.0-flash"
+          # Opcional: Você pode customizar o sistema de instrução aqui
+          system_instruction: |
+            Aja como um Engenheiro de Segurança Sênior (DevSecOps).
+            Analise o código buscando vulnerabilidades OWASP (SQL Injection), 
+            code smells e conformidade com Spring Boot 3.4.
+            Responda em Português.

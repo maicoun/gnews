@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Gemini Code Review
-        uses: google-gemini/gemini-code-review-action@v1
+        uses: sshnaidm/gemini-code-review-action@v1
         with:
           # Aqui usamos a Secret que você criou
           gemini_api_key: ${{ secrets.AI_API_KEY }}

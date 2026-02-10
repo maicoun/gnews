@@ -18,4 +18,13 @@ public class ArticleRepository {
     public List<Article> findAll() {
         return Collections.unmodifiableList(articles);
     }
+
+    // Código propositalmente vulnerável
+    public List<Article> findByTitleUnsafe(String userInput) {
+        String query = "SELECT * FROM news WHERE title = '" + userInput + "'";
+        // Simulação: Não executa SQL real, apenas mostra o "veneno"
+        System.out.println("Executando query insegura: " + query);
+        // Retorna todos os artigos (simulação)
+        return findAll();
+    }
 }
